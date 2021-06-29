@@ -1,0 +1,23 @@
+{
+  "name": "sombresbots",
+  "version": "1.0.0",
+  "description": "Bots pour le serveur de sombresvoies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IDDragnil/SombresBots.git"
+  },
+  "author": "ID Dragnil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IDDragnil/SombresBots/issues"
+  },
+  "homepage": "https://github.com/IDDragnil/SombresBots#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "rpg-dice-roller": "^5.0.0"
+  }
+}
