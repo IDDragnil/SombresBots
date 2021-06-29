@@ -1,4 +1,4 @@
-const DiceRoller = require('../node_modules/rpg-dice-roller/dice-roller.js');
+const DiceRoller = require('rpg-dice-roller');
 const Discord = require('discord.js')
 
 module.exports.run = async (bot, message, args) => {

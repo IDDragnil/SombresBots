@@ -1,19 +1,13 @@
 const Discord = require('discord.js')
-const DiceRoller = require('../node_modules/rpg-dice-roller/dice-roller.js');
+const { Random, nodeCrypto, MersenneTwister19937 } = require("random-js");
 
 module.exports.run = async (bot, message, args) => {
     const data = new Discord.MessageEmbed().setTitle('Résultat du jet').setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }));
-    let dice = new DiceRoller.DiceRoller();
-    let Num1 = dice.roll('1d6')
-    let Num2 = dice.roll('1d6')
 
-    // Num1 = Num1.substr(Num1.length - 1);
-    // Num2 = Num2.substr(Num2.length - 1);
-    var test = toString(Num1)
-    console.log(typeof(Num1))
-    console.log(Num1)
-    console.log(typeof(test))
-    console.log(test)
+    const random = new Random(MersenneTwister19937.autoSeed());
+    let Num1 = random.integer(1,6)
+    let Num2 = random.integer(1,6)
+
     data.setDescription('Le dé est tombé sur ' + Num1)
     if (!args.length) {
         if (Num1 > 1 && Num1 < 6) {
