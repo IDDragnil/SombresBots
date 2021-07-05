@@ -33,7 +33,7 @@ fs.readdir("./commands/", (err, files) => {
 
 bot.on('ready', function() {
     console.log(bot.user.username + " is online.")
-    bot.user.setActivity('Mon prefix est ":"').catch(console.error)
+    bot.user.setActivity(`Mon prefix est "${config.prefix}"`).catch(console.error)
 })
 
 bot.on('message', function (message) {
@@ -42,10 +42,10 @@ bot.on('message', function (message) {
         message.reply('pong')
 
     let prefix = config.prefix;
-	let args = message.content.slice(prefix.length).split(/ +/);
+    if(!message.content.startsWith(prefix)) return
+    let args = message.content.slice(prefix.length).split(/ +/);
 	let commandName = args.shift().toLowerCase();
 	let commandfile = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.help.aliases && cmd.help.aliases.includes(commandName));
     
-    // let commandfile = bot.commands.get(command.slice(prefix.length));
     if(commandfile) commandfile.run(bot,message,args);
 })

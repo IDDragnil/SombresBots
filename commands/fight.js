@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const mat = require('mathjs');
 const { Random, nodeCrypto, MersenneTwister19937 } = require("random-js");
 
 module.exports.run = async (bot, message, args) => {
@@ -28,7 +29,15 @@ module.exports.run = async (bot, message, args) => {
         return message.channel.send(data);
     }
 
-    const Num = parseInt(args[0], 10);
+    var Num = 0
+    if (!isNaN(args[0])) {
+        try {
+            Num = mat.evaluate(args.join(' '));
+        } catch (e) {
+            return message.channel.send("BITE")
+        }
+    }
+
     if (Num1 > 1 && Num1 < 6) {
         data.setDescription(data.description + '\nLe résultat est donc ' + (Num1 + Num))
         data.setColor(0x03a9f4)
